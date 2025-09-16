@@ -3,6 +3,6 @@ export const URLS = {
   ADMIN: "/admin",
   MEMBERS: "/members",
   TRAINERS: "/trainers",
-  USERS:"/dashboard",
-  TRAINERSDASHBOARD:"/trainerdashboard"
+  USERS: "/dashboard",
+  TRAINERS_DASHBOARD: "/trainer-dashboard",
 };
