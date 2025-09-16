@@ -176,6 +176,7 @@ function Navbar() {
         response.data.code === "PROFILE"
       ) {
         const { data } = response.data;
+        console.log(333, "reached");
         localStorage.setItem("roles", JSON.stringify(data.roles));
         localStorage.setItem("user", data.email);
         localStorage.setItem("fullName", data.fullName);
