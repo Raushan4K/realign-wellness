@@ -15,6 +15,8 @@ import Members from "./views/Members";
 import Trainers from "./views/Trainers";
 import UserDashboard from "./views/UserDashboard";
 import TrainerDashboard from "./views/TrainerDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+import LoginProtectedRoute from "./components/LoginProtectedRoute";
 
 function App() {
   return (
@@ -23,15 +25,52 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Navigate to={URLS.HOME} replace />} />
-            <Route path={URLS.HOME} element={<Home />} />
+            <Route
+              path={URLS.HOME}
+              element={
+                <LoginProtectedRoute>
+                  <Home />
+                </LoginProtectedRoute>
+              }
+            />
           </Route>
           <Route path="/" element={<UserLayout />}>
-            <Route path={URLS.ADMIN} element={<AdminDashboard />} />
-            <Route path={URLS.MEMBERS} element={<Members />} />
-            <Route path={URLS.TRAINERS} element={<Trainers />} />
-            <Route path={URLS.USERS} element={<UserDashboard/>} />
-            <Route path={URLS.TRAINERSDASHBOARD} element={<TrainerDashboard/>} />
-
+            <Route
+              path={URLS.ADMIN}
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={URLS.MEMBERS}
+              element={
+                <ProtectedRoute>
+                  <Members />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={URLS.TRAINERS}
+              element={
+                <ProtectedRoute>
+                  <Trainers />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={URLS.USERS}
+              element={
+                <ProtectedRoute>
+                  <UserDashboard />
+                </ProtectedRoute>
+              }
+            />
+            {/* <Route
+              path={URLS.TRAINERS_DASHBOARD}
+              element={<TrainerDashboard />}
+            /> */}
           </Route>
         </Routes>
       </Router>

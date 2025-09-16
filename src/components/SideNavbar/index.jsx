@@ -95,7 +95,9 @@ const SideNavbar = ({ open, handleDrawerClose }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const roles = JSON.parse(localStorage.getItem("roles"));
+  const roles = localStorage.getItem("roles")
+    ? JSON.parse(localStorage.getItem("roles"))
+    : [];
 
   useEffect(() => {
     if (roles.includes("USER")) {
