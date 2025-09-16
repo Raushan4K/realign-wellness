@@ -1,0 +1,391 @@
+/* filepath: f:\yogarealign\realign\src\styles\Navbar.css */
+/* minimal, clean tweaks for Material-UI Navbar */
+
+.navbar-toolbar {
+  padding-left: 16px;
+  padding-right: 16px;
+  background: rgb(185, 35, 88);
+}
+
+/* brand tweaks */
+.brand-name {
+  letter-spacing: -0.2px;
+  color: #16a34a;
+}
+
+/* CTA fallback styling (MUI handles most) */
+.cta {
+  border-radius: 9999px;
+}
+
+/* small-screen spacing adjustments */
+@media (max-width: 600px) {
+  .navbar-toolbar {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* Hero / Home page styles (keeps visual language consistent with navbar) */
+.hero {
+  padding: 64px 20px;
+  display: flex;
+  justify-content: center;
+  color: var(--text);
+}
+
+.hero-container {
+  width: 100%;
+  max-width: 1080px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  color: var(--muted);
+  max-width: 840px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* CTA group — reuse .cta for primary; create complementary outline style */
+.hero-cta-group {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+/* Outline / secondary button */
+.outline-cta {
+  --outline-bg: rgba(22,163,74,0.06);
+  background: transparent;
+  border: 1.5px solid rgba(22,163,74,0.18);
+  color: var(--accent);
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.outline-cta:hover {
+  background: var(--outline-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(16,24,40,0.04);
+}
+
+/* Small screens — stack and increase spacing for touch targets */
+@media (max-width: 767px) {
+  .hero {
+    padding: 36px 16px;
+  }
+
+  .hero-container {
+    gap: 16px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .hero-cta-group .cta,
+  .hero-cta-group .outline-cta {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+/* Featured classes / cards */
+/* show full-cover image that fills the top area and matches card footer width */
+.class-card {
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px; /* increase so image + content align across cards */
+  box-shadow: 0 8px 20px rgba(16,24,40,0.04);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  background: #fff;
+}
+.class-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(16,24,40,0.08);
+}
+
+/* top image area — fixed heights per breakpoint to keep visual parity */
+.class-card-top {
+  width: 100%;
+  overflow: hidden;
+  min-height: 160px;
+}
+
+/* use cover so image fills the box fully (no letterboxing) */
+.class-card-top-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills entire area */
+  object-position: center;
+}
+
+/* content area stretches to bottom so footer (schedule + button) align */
+.class-card .MuiCardContent-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* schedule and join button spacing */
+.class-schedule {
+  font-size: 0.95rem;
+}
+
+/* ensure join button remains clickable (and doesn't inherit pointer-events:none) */
+.join-btn {
+  pointer-events: auto;
+}
+
+/* responsive adjustments */
+@media (max-width: 1024px) {
+  .class-card {
+    min-height: 380px;
+  }
+  .class-card-top {
+    min-height: 180px;
+  }
+}
+@media (max-width: 767px) {
+  .class-card {
+    min-height: auto;
+  }
+  .class-card-top {
+    min-height: 140px;
+  }
+}
+
+/* modal preview image styling */
+.class-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ensure dialog image area is visually consistent with cards */
+@media (min-width: 600px) {
+  .MuiDialog-paper {
+    border-radius: 12px;
+  }
+}
+
+/* add/replace these rules */
+
+/* horizontal flex row that keeps items inline on desktop and responsive */
+.cards-row {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  flex-wrap: wrap; /* allows wrapping when space is limited */
+  margin: 0 -12px; /* optional: balance outer grid spacing */
+}
+
+/* each item takes 1/3 on desktop, 1/2 on tablet, full on mobile */
+.cards-row-item {
+  padding: 0 12px; /* matches negative margin above */
+  box-sizing: border-box;
+  flex: 1 1 calc(33.333% - 24px); /* three across by default */
+  max-width: calc(33.333% - 24px);
+}
+
+/* tablet: two across */
+@media (max-width: 959px) {
+  .cards-row-item {
+    flex: 1 1 calc(50% - 24px);
+    max-width: calc(50% - 24px);
+  }
+}
+
+/* mobile: full width */
+@media (max-width: 599px) {
+  .cards-row-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* ensure card fills the item so footer stays visible */
+.image-only-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* image area expands */
+.image-area { flex: 1 1 auto; width: 100%; height: 100%; overflow: hidden; }
+.image-area-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Hover / highlight effects for image-only cards */
+.image-only-card {
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1), box-shadow 260ms ease;
+  will-change: transform, box-shadow;
+  transform-origin: center;
+}
+.image-only-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 24px 48px rgba(16,24,40,0.14);
+  z-index: 6; /* raises hovered card above neighbors */
+}
+
+/* subtle image zoom + brightness/contrast tweak on hover */
+.image-area {
+  position: relative; /* required for overlay pseudo-element */
+  overflow: hidden;
+}
+.image-area-img {
+  transition: transform 420ms cubic-bezier(.2,.9,.2,1), filter 260ms ease;
+  transform-origin: center;
+}
+.image-only-card:hover .image-area-img {
+  transform: scale(1.04);
+  filter: brightness(0.96) contrast(1.03);
+}
+
+/* soft dark gradient overlay to improve button contrast on hover */
+.image-area::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.12) 100%);
+  opacity: 0;
+  transition: opacity 260ms ease;
+  pointer-events: none;
+}
+.image-only-card:hover .image-area::after {
+  opacity: 1;
+}
+
+/* footer and button micro-interactions */
+.card-footer {
+  transition: background 240ms ease, transform 240ms ease;
+  background: rgba(255,255,255,0.98);
+}
+.card-footer .MuiButton-root {
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+.image-only-card:hover .card-footer .MuiButton-root {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(4,120,87,0.12);
+}
+
+/* reduce/disable large hover transforms on touch/small devices for stability */
+@media (hover: none), (max-width: 599px) {
+  .image-only-card,
+  .image-only-card:hover {
+    transform: none;
+    box-shadow: 0 8px 20px rgba(16,24,40,0.06);
+  }
+  .image-area-img { transform: none; }
+  .image-area::after { opacity: 0 !important; }
+  .card-footer .MuiButton-root { transform: none; box-shadow: none; }
+}
+
+/* REPLACE or add — improved footer spacing and button alignment */
+.card-footer {
+  flex: 0 0 auto;
+  padding: 20px 16px;                /* more top/bottom space so button sits clearly in footer */
+  background: rgba(255,255,255,0.98);
+  border-top: 1px solid rgba(15,23,42,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;        /* right align on desktop */
+  gap: 12px;
+  min-height: 68px;                 /* reserves footer height so it doesn't overlap image */
+  box-sizing: border-box;
+}
+
+/* ensure button has no negative margins and visible shadow */
+.card-footer .MuiButton-root {
+  margin: 0;
+  box-shadow: 0 8px 18px rgba(4,120,87,0.12);
+  z-index: 2;
+}
+
+/* mobile: center the button and make it full width */
+@media (max-width: 599px) {
+  .card-footer {
+    justify-content: center;
+    padding: 14px;
+    min-height: 64px;
+  }
+
+  .card-footer .MuiButton-root {
+    width: 100% !important;
+    max-width: 420px;
+  }
+}
+
+/* keep the hover micro-interaction but avoid big vertical shifts that overlap */
+.image-only-card:hover .card-footer .MuiButton-root {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(4,120,87,0.12);
+}
+
+/* Featured heading - bold and professional */
+.featured-heading {
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: -0.4px;
+  text-align: center;
+  color: #0f172a; /* dark slate */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Slightly larger on desktop */
+@media (min-width: 960px) {
+  .featured-heading { font-size: 2rem; }
+}
+
+/* Subtitle - concise, centered, readable */
+.featured-subtitle {
+  max-width: 920px;
+  margin: 0 auto 1.5rem;
+  color: #6b7280; /* muted gray */
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  letter-spacing: 0.15px;
+}
+
+/* small screens: tighten sizes */
+@media (max-width: 599px) {
+  .featured-subtitle { font-size: 0.98rem; max-width: 100%; padding: 0 12px; }
+  .featured-heading { font-size: 1.4rem; }
+}
